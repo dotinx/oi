@@ -13,7 +13,7 @@ int main() {
 	s2=n/gcd(n,i);i/=gcd(n,i);
 	s2=(n+1)/gcd(n+1,i)*s2;i/=gcd(n+1,i);
 	s2=(2*n+1)/gcd(2*n+1,i)*s2;
-	s3=s1*s1;//三次方是一次方的平方
+	s3=s1*s1;
 	i=30;
 	s4=n/gcd(n,i);i/=gcd(n,i);
 	s4=(n+1)/gcd(n+1,i)*s4;i/=gcd(n+1,i);
