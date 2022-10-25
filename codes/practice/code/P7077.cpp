@@ -14,4 +14,5 @@ int main(){
   scanf("%d",&n);
   for(int i = 1;i <= n;i++) scanf("%d",data + i);
   scanf("%d",&m);
+  sc
 }
