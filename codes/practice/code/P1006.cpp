@@ -1,25 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
-int val[52][52][52][52],w[52][52],m,n;
-long long ans = -1,cnt = 0;
+long long val[120][60][60],w[60][60],m,n;
 // void dfs(int depth,int value,bool ret,int nx,int ny);
 int main(){
-  scanf("%d%d",&m,&n);
-  for(int y = 1;y <= n;y++)
-    for(int x = 1;x <= m;x++)
-      scanf("%d",&w[x][y]);
-  for(int y = n;y >= 1;y--){
-    for(int x = m;x >= 1;x--){
-      for(int yr = 1;yr <= n;yr++){
-        for(int xr = 1;xr <= m;xr++){
-          if(x == zr && y == yr) val[x][y][xr][yr] = 0;
-          val[x][y][xr][yr] = max(val[x][y][xr + 1][yr],max(val[x][y][xr][yr+1],max()))
-        }
+  scanf("%lld%lld",&m,&n);
+  for(int i = 1;i <= m;i++)
+    for(int j = 1;j <= n;j++)
+      scanf("%lld",&w[i][j]);
+  memset(val,-1,sizeof(val));
+  val[2][1][1] = 0;
+  for(int k = 3;k < m + n;k++)
+    for(int i1 = 1;i1 < n;i1++)
+      for(int i2 = i1 + 1;i2 <= n;i2++){
+        long long s = val[k][i1][i2];
+        s = max(val[k - 1][i1][i2],s);
+        s = max(val[k - 1][i1 - 1][i2],s);
+        s = max(val[k - 1][i1][i2 - 1],s);
+        s = max(val[k - 1][i1 - 1][i2 - 1],s);
+        if(s == -1) continue;
+        val[k][i1][i2] = s + w[k-i1][i1] + w[k - i2][i2];
       }
-    }
-  }
-  dfs(0,0,false,1,1);
-  printf("%lld\n%lld",ans,cnt);
+  // dfs(0,0,false,1,1);
+  printf("%lld\n",val[m + n - 1][n - 1][n]);
   return 0;
 }
 // void dfs(int depth,int value,bool ret,int nx,int ny){
