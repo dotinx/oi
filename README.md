@@ -5,3 +5,10 @@ Code Repository For OI Practicing.
 ```shell
 g++ -W -v -x c++ - -fsyntax-only
 ```
+
+---
+
+```Git```强制同步远程分支与本地分支（本地多/远程多都可以）
+```shell
+git remote update origin --prune
+```
